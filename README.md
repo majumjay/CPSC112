@@ -139,5 +139,199 @@ public class CPSC112_Assignment3 {
 }
   }
   
+  
+  
+  public static boolean isGameOver(String input) {
+    // Parts 3 and 4 code goes here
+	  
+	  
+	  String b = new String();
+	  b = input; 
+	  
+	  String a = new String();
+	  a = mySecret; 
+	  
+	  int firstActual; 
+	  int secondActual; 
+      int thirdActual; 
+	  int fourthActual;
+	  
+	  int firstGuess; 
+	  int secondGuess; 
+	  int thirdGuess; 
+	  int fourthGuess;
+	  
+		 
+	  int DigitsInCommon = 0;
+	  int CorrectPosition = 0;
+	  
+	  int liePosition;
+	  int lieInCommon = r.nextInt(5);
+	  
+	  				if (lieInCommon == 0) {
+	  							liePosition = 0;
+	  										}
+	  				else if (lieInCommon == 4) {
+	  					liePosition = r.nextInt(4);
+	  				}
+	  
+	  						else {
+	  							liePosition = r.nextInt(lieInCommon + 1);
+	  										}
+	  
+	  int lie = r.nextInt(3);   
+	
+	  
+	  if(isGuessValid(input))
+	  {
+		  //ACUTAL VALUES
+		 firstActual =  Integer.parseInt(a.substring(0,1)); 
+		 secondActual = Integer.parseInt(a.substring(1,2));
+		 thirdActual = Integer.parseInt(a.substring(2,3));
+		 fourthActual = Integer.parseInt(a.substring(3,4));
+		  int actual = firstActual*1000 + secondActual*100 + thirdActual*10 + fourthActual;
+		 
+		 
+		 // GUESSES
+	  firstGuess = Integer.parseInt(b.substring(0,1));
+		 secondGuess = Integer.parseInt(b.substring(1,2));
+		 thirdGuess = Integer.parseInt(b.substring(2,3));
+		 fourthGuess = Integer.parseInt(b.substring(3,4));
+		 
+		 int guess = firstGuess*1000 + secondGuess*100 + thirdGuess*10 + fourthGuess; 
+		 
+		 
+		 
+		 
+		 	if (guess < actual) {
+		exceptions = exceptions - 1; 
+			if (exceptions <= 0) {
+				exceptions = 0; 
+			}
+		System.out.println("Your guess was lower than allowed. You have " + exceptions +  " exceptions remaining.");
+	}
+		 
+	
+	
+	if (exceptions == 0 && guess < actual) {
+		System.out.println("Your guess was lower than allowed. You have 0 exceptions remaining.");
+		return false; 
+		
+	}
+	
+	
+	if (exceptions == 0 && guess > actual) {
+		System.out.print("You're out of exceptions and you've guessed too high! The secret was " + mySecret +  ".");
+		return true; 
+	}
+	
+	
+	
+	if (actual == guess)	{ 
+		System.out.println("You won!");
+		firstActual = 900; 
+		secondActual = 900;
+		thirdActual = 900;
+		fourthActual = 900;
+		return true; 
+	}
+	
+	
+
+	
+	
+	
+		 if (firstGuess == firstActual || firstGuess == secondActual || firstGuess == thirdActual || firstGuess == fourthActual ) {
+			 DigitsInCommon = DigitsInCommon + 1; 
+		 }
+			  
+		 
+		 
+		 if (firstGuess == firstActual) {
+				  CorrectPosition = CorrectPosition + 1; 
+			  }
+		 
+			  
+		 if (secondGuess == firstActual || secondGuess == secondActual || secondGuess == thirdActual || secondGuess == fourthActual) {
+				  DigitsInCommon = DigitsInCommon + 1;
+			  }
+		 
+		 
+		 
+			  if (secondGuess == secondActual) {
+				  CorrectPosition = CorrectPosition + 1; 
+			  }
+			  
+			  
+		 if (thirdGuess == firstActual || thirdGuess == secondActual || thirdGuess == thirdActual || thirdGuess == fourthActual) {
+				  DigitsInCommon = DigitsInCommon + 1;
+			  }
+		 
+			  if (thirdGuess == thirdActual) {
+				  CorrectPosition = CorrectPosition + 1; 
+			  }  
+			  
+			  
+
+		if (fourthGuess == firstActual || fourthGuess == secondActual || fourthGuess == thirdActual || fourthGuess == fourthActual) {
+				  DigitsInCommon = DigitsInCommon + 1;
+			  }
+		
+		
+		
+			  if (fourthGuess == fourthActual) {
+				  CorrectPosition = CorrectPosition + 1; 
+			  }
+			  
+			  
+			if (lie == 0 && k == 0) {
+				System.out.print("Guess " + guess + ";");
+				System.out.print(" Result: " + lieInCommon + "," + liePosition);
+				System.out.println("");
+				
+				if (DEBUG) { 
+					System.out.println("Lie");
+				}
+				
+				k = k + 1;
+				return false; 
+			}
+			
+			
+			
+			if (lie == 1 || lie == 2 && k == 1) {
+				k = k - 1; 
+			}
+			
+			
+			  
+			  
+		 
+		System.out.print("Guess: " + guess + ";");
+		System.out.print(" Result: " + DigitsInCommon + "," + CorrectPosition);
+		System.out.println("");
+		 return false; 
+		 
+		 
+      }
+	  
+	  
+	  
+	  else 
+	  {
+		 return false; 
+	  }
+	 
+	  
+  }
+  
+  
+ 
+  
+  }
+  
+
+
+  
 
   
