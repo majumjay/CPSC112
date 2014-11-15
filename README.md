@@ -81,3 +81,63 @@ public class CPSC112_Assignment3 {
     }
     
   }
+  
+  
+  
+  public static boolean isGuessValid(String input) {
+    
+	  
+	
+	  String a = new String();
+	  String b = new String();
+	  String c = new String(); 
+	  String d = new String();
+	  
+	   if (input.length() != 4) { 
+		  System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+		  return false;
+		  
+	  }
+	 
+	  
+	  else { 
+		  
+	  
+	  a = input.substring(0,1);
+	  b = input.substring(1,2);
+	  c = input.substring(2,3);
+	  d = input.substring(3,4);
+	  
+	 try { 
+	
+	  int one = Integer.parseInt(a);
+	  int two = Integer.parseInt(b);
+	  int three = Integer.parseInt(c);
+	  int four = Integer.parseInt(d);
+	
+	
+	  if (one == two || one == three || one == four || two == three || two == four || three == four) {
+		  System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+		  return false;
+	  }
+	  
+	  else if (one > 7 || two > 7 || three > 7 || four > 7) {
+		  System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+		  return false; 
+	  }
+
+	  else {
+		  return true; 
+		  
+	  }
+	}
+
+	  catch (NumberFormatException e) { 
+		  System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+		  return false; 
+	  }
+}
+  }
+  
+
+  
